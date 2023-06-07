@@ -75,6 +75,7 @@ async function handleSubmit(event) {
     // check what url was put into the form
     let url = document.querySelector('#website_url').value;
     try {
+      DOMRoot('#results').render('Loading...');
       const res = await fetch(`http://localhost:8081/sentiment?url=${url}`, { headers: { 'Content-Type': 'application/json' }})
       .then(async res => await res.json());
       const fragment = document.createDocumentFragment();
