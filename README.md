@@ -1,31 +1,23 @@
-  var https = require('follow-redirects').https;
-  var fs = require('fs');
+# Udacity Front end Project
 
-  var options = {
-    'method': 'POST',
-    'hostname': 'api.meaningcloud.com',
-    'path': '/sentiment-2.1?key=<your_key>&lang=<lang>&txt=<text>&model=<model>',
-    'headers': {
-    },
-    'maxRedirects': 20
-  };
+## Evaluate a News Article with Natural Language Processing
 
-  var req = https.request(options, function (res) {
-    var chunks = [];
+### Development setup
 
-    res.on("data", function (chunk) {
-      chunks.push(chunk);
-    });
+1. Client
 
-    res.on("end", function (chunk) {
-      var body = Buffer.concat(chunks);
-      console.log(body.toString());
-    });
+in the root run `npm run build-dev`
+your browser should open at `http://localhost:8080`
 
-    res.on("error", function (error) {
-      console.error(error);
-    });
-  });
+2. Server
 
-  req.end();
-  
+you should have the api server running to make api calls
+start the server run `npm start`
+
+3. Api Key
+
+This project is using Meaning Cloud Api, you can find the documentation here `https://www.meaningcloud.com/developer/documentation/supported-formats`
+
+rename `.env.example` in the root folder to `.env` and add your api key `API_KEY=<your api key>`
+
+
